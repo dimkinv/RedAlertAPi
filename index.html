@@ -1,0 +1,24 @@
+<html>
+<head>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      var sound = new Audio('/alert.wav');
+      var board = $('#board');
+
+      var socket = io();
+      socket.on('message', function (message) {
+        console.log(message);
+        board.append($('<li>').html(JSON.stringify(message)));
+        sound.play();
+      });
+    })
+
+  </script>
+</head>
+<body>
+<ul id="board">
+</ul>
+</body>
+</html>
