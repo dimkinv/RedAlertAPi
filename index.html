@@ -11,7 +11,9 @@
       socket.on('message', function (message) {
         console.log(message);
         board.append($('<li>').html(JSON.stringify(message)));
-        sound.play();
+        if (message.data.length > 0) {
+          sound.play();
+        }
       });
     })
 
